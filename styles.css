@@ -1,0 +1,103 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --main: rgb(190, 190, 190);
+    --mainShadow: rgb(110, 110, 110);
+    --mainWin: rgb(240, 240, 240);
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: none;
+    user-select: none;
+}
+
+#stage {
+    width: 432px;
+    height: 432px;
+    border: 6px solid var(--main);
+    border-radius: 50px;
+    box-shadow: 0 0 15px 5px var(--mainShadow), inset 0 0 6px 3px var(--mainShadow);
+    display: flex;
+    flex-wrap: wrap;
+    padding: auto;
+    overflow: hidden;
+}
+/* CELLS ######################################################### */
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    height: 140px;
+    border-radius: 10px;
+}
+#c1 {border-top-left-radius: 50px;}
+#c3 {border-top-right-radius: 50px;} 
+#c7 {border-bottom-left-radius: 50px;} 
+#c9 {border-bottom-right-radius: 50px;}
+.cH {animation: cellHover 0.2s;}
+.cUH {animation: cellUnHover 0.2s;}
+.cW {animation: cellWin 0.4s;}
+@keyframes cellHover {
+    from {box-shadow: inset 0 0 0px 0px var(--mainShadow);}
+    to {box-shadow: inset 0 0 10px 5px var(--mainShadow);}
+}
+@keyframes cellUnHover {
+    from {box-shadow: inset 0 0 10px 5px var(--mainShadow);}
+    to {box-shadow: inset 0 0 0px 0px var(--mainShadow);}
+}
+@keyframes cellWin {
+    from {background-color: var(--main);}
+    to {background-color: var(--mainWin);}
+}
+
+/* CURSOR ######################################################## */
+#cursor {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 5px solid var(--main);
+    box-shadow: 0 0 15px 5px var(--mainShadow), inset 0 0 8px 4px var(--mainShadow);
+    transition: border 0.3s;
+}
+.cUP {animation: cursorUp 0.2s;}
+.cDOWN {animation: cursorDown 0.2s;}
+@keyframes cursorUp {
+    from {border: 5px solid var(--main);}
+    to {border: 10px solid var(--main);}
+}
+@keyframes cursorDown {
+    from {border: 10px solid var(--main);}
+    to {border: 5px solid var(--main);}
+}
+
+/* POINTS ########################################################### */
+.vaccine {
+    font-size: 100px;
+    text-shadow: 0 0 20px var(--mainShadow), 0 0 20px var(--mainShadow), 0 0 20px var(--mainShadow);
+    position: absolute;
+    color: var(--main);
+}
+.vA {animation: vaccineAppears 0.3s;}
+@keyframes vaccineAppears {
+    from {text-shadow: 0 0 0px var(--mainShadow);}
+    to {text-shadow: 0 0 20px var(--mainShadow), 0 0 20px var(--mainShadow), 0 0 20px var(--mainShadow);}
+}
+.covid {
+    font-size: 100px;
+    text-shadow: 0 0 20px var(--mainShadow), 0 0 20px var(--mainShadow), 0 0 20px var(--mainShadow);
+    position: absolute;
+    color: var(--main);
+}
+
